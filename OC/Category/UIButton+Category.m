@@ -9,7 +9,7 @@
 #import "UIButton+Category.h"
 
 @implementation UIButton (Category)
-+ (UIButton *)setImageName:(NSString *)imageName  selectImageName:(NSString *)selectImageName action:(SEL)action target:(id)target {
++ (UIButton *)dc_setImageName:(NSString *)imageName  selectImageName:(NSString *)selectImageName action:(SEL)action target:(id)target {
     UIButton *btn = [[self alloc]init];
     
     if (imageName != nil && ![imageName isEqualToString:@""]) {
@@ -25,7 +25,7 @@
     [btn sizeToFit];
     return  btn;
 }
-+ (UIButton *)setTitle:(NSString *)title normalcolor:(UIColor *)normalColor selectedlColor:(UIColor *)selectedColor fontSize:(CGFloat)fontSize action:(SEL)action target:(id)target {
++ (UIButton *)dc_setTitle:(NSString *)title normalcolor:(UIColor *)normalColor selectedlColor:(UIColor *)selectedColor fontSize:(CGFloat)fontSize action:(SEL)action target:(id)target {
     UIButton *btn = [[self alloc]init];
     if (title != nil && ![title isEqualToString:@""]) {
         
@@ -50,7 +50,7 @@
     [btn sizeToFit];
     return  btn;
 }
-+ (UIButton *)setTitle:(NSString *)title color:(UIColor *)color fontSize:(CGFloat)fontSize action:(SEL)action target:(id)target {
++ (UIButton *)dc_setTitle:(NSString *)title color:(UIColor *)color fontSize:(CGFloat)fontSize action:(SEL)action target:(id)target {
     UIButton *btn = [[self alloc]init];
     if (title != nil && ![title isEqualToString:@""]) {
         
@@ -71,7 +71,7 @@
     [btn sizeToFit];
     return  btn;
 }
-+ (UIButton*)setBackImageName:(NSString *)backImageName imageName:(NSString *)imageName action:(SEL)action target:(id)target {
++ (UIButton*)dc_setBackImageName:(NSString *)backImageName imageName:(NSString *)imageName action:(SEL)action target:(id)target {
     UIButton *btn = [[self alloc]init];
     if (backImageName != nil && ![backImageName isEqualToString:@""]) {
         
@@ -88,7 +88,7 @@
     [btn sizeToFit];
     return  btn;
 }
-+ (UIButton *)setTopImgName:(NSString *)imageName bottomTitle:(NSString *)bottomTitle color:(UIColor *)color fontSize:(CGFloat)fontSize  action:(SEL)action target:(id)target {
++ (UIButton *)dc_setTopImgName:(NSString *)imageName bottomTitle:(NSString *)bottomTitle color:(UIColor *)color fontSize:(CGFloat)fontSize  action:(SEL)action target:(id)target {
     UIButton *btn = [[self alloc]init];
     if (bottomTitle != nil && ![bottomTitle isEqualToString:@""]) {
         

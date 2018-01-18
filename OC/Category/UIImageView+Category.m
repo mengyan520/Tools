@@ -19,4 +19,14 @@
     return self;
         
 }
+- (void)dc_circleImageWithRadiu:(CGFloat)radiu {
+   
+        UIGraphicsBeginImageContextWithOptions(self.bounds.size, NO, 1.0);
+        [[UIBezierPath bezierPathWithRoundedRect:self.bounds
+                                    cornerRadius:radiu] addClip];
+        [self.image drawInRect:self.bounds];
+        UIImage *img = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        self.image = img;
+}
 @end

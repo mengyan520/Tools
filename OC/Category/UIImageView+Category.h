@@ -11,4 +11,5 @@
 @interface UIImageView (Category)
 
 - (UIImageView *)initWithImageName:(NSString *)imageName target:(id)target action:(SEL)action;
+- (void)dc_circleImageWithRadiu:(CGFloat)radiu;
 @end
