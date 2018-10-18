@@ -8,15 +8,6 @@
 
 import UIKit
 // MARK: - 颜色
-let BLACK_COLOR      = UIColor.black
-let DARKGRAY_COLOR   = UIColor.darkGray
-let LIGHTGRAY_COLOR  = UIColor.lightGray
-let WHITE_COLOR      = UIColor.white
-let CLEAR_COLOR      = UIColor.clear
-let RED_COLOR        = UIColor.red
-let GRAY_COLOR       = UIColor.gray
-let YELLOW_COLOR     = UIColor.yellow
-let BLUE_COLOR       = UIColor.blue
 func RGBA(r: CGFloat, g: CGFloat, b: CGFloat, a: CGFloat) -> UIColor {
     if #available(iOS 10.0, *) {
         return  UIColor.init(displayP3Red: r/255.0, green:  g/255.0, blue: b/255.0, alpha: a)
@@ -39,13 +30,26 @@ func UIColorFromHexValue(rgbValue: UInt) -> UIColor {
         alpha: CGFloat(1.0)
     )
 }
+func UIColorFromHexValueWithAlpha(rgbValue: UInt,alpha:CGFloat) -> UIColor {
+    return UIColor(
+        red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
+        green: CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0,
+        blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
+        alpha: alpha
+    )
+}
 // MARK: - Size
 let SCREEN_WIDTH  =  UIScreen.main.bounds.size.width
 let SCREEN_HEIGHT =  UIScreen.main.bounds.size.height
-let IS_iPhoneX    =  (SCREEN_WIDTH == 375 && SCREEN_HEIGHT == 812 ? true : false)
-let iPhoneX_HomeIndicator   = 34
-let StatusBarAndNavigationBarHeight =  (IS_iPhoneX ? 88 : 64)
-let iPhoneX_NavigationExtraHeight =  24
+let kDevice_Is_iPhoneX    = UIScreen.instancesRespond(to:#selector(getter: UIScreen.main.currentMode)) ? __CGSizeEqualToSize(CGSize(width:1125,height:2436), (UIScreen.main.currentMode?.size)!) : false || UIScreen.instancesRespond(to:#selector(getter: UIScreen.main.currentMode)) ? __CGSizeEqualToSize(CGSize(width:828,height:1792), (UIScreen.main.currentMode?.size)!) : false || UIScreen.instancesRespond(to:#selector(getter: UIScreen.main.currentMode)) ? __CGSizeEqualToSize(CGSize(width:1242,height:2688), (UIScreen.main.currentMode?.size)!) : false
+let iPhoneX_HomeIndicator   = kDevice_Is_iPhoneX ? 34:0
+let StatusBarAndNavigationBarHeight =  (kDevice_Is_iPhoneX ? 88 : 64)
+func kScaleW(x:CGFloat)->CGFloat {
+    return (x*UIScreen.main.bounds.size.width)/375.00
+}
+func kScaleH(x:CGFloat)->CGFloat {
+    return (x*UIScreen.main.bounds.size.height)/667.00
+}
 // MARK: - Font
 func Font(fontSize: CGFloat) -> UIFont {
     
@@ -56,6 +60,9 @@ func BFont(fontSize: CGFloat) -> UIFont {
     
     return UIFont.boldSystemFont(ofSize: fontSize)
     
+}
+func UIFontFromPixel(pixel:CFloat)->UIFont {
+    return UIFont.systemFont(ofSize: CGFloat(pixel * 3 / 4))
 }
 // MARK: - 常用宏
 let Key_Window = UIApplication.shared.keyWindow
