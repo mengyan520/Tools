@@ -30,7 +30,7 @@ func UIColorFromHexValue(rgbValue: UInt) -> UIColor {
         alpha: CGFloat(1.0)
     )
 }
-func UIColorFromHexValueWithAlpha(rgbValue: UInt,alpha:CGFloat) -> UIColor {
+func UIColorFromHexValue(rgbValue: UInt,alpha:CGFloat) -> UIColor {
     return UIColor(
         red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
         green: CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0,
@@ -42,8 +42,8 @@ func UIColorFromHexValueWithAlpha(rgbValue: UInt,alpha:CGFloat) -> UIColor {
 let SCREEN_WIDTH  =  UIScreen.main.bounds.size.width
 let SCREEN_HEIGHT =  UIScreen.main.bounds.size.height
 let kDevice_Is_iPhoneX    = UIScreen.instancesRespond(to:#selector(getter: UIScreen.main.currentMode)) ? __CGSizeEqualToSize(CGSize(width:1125,height:2436), (UIScreen.main.currentMode?.size)!) : false || UIScreen.instancesRespond(to:#selector(getter: UIScreen.main.currentMode)) ? __CGSizeEqualToSize(CGSize(width:828,height:1792), (UIScreen.main.currentMode?.size)!) : false || UIScreen.instancesRespond(to:#selector(getter: UIScreen.main.currentMode)) ? __CGSizeEqualToSize(CGSize(width:1242,height:2688), (UIScreen.main.currentMode?.size)!) : false
-let iPhoneX_HomeIndicator   = kDevice_Is_iPhoneX ? 34:0
-let StatusBarAndNavigationBarHeight =  (kDevice_Is_iPhoneX ? 88 : 64)
+let iPhoneX_HomeIndicator:CGFloat   = kDevice_Is_iPhoneX ? 34:0
+let StatusBarAndNavigationBarHeight:CGFloat =  (kDevice_Is_iPhoneX ? 88 : 64)
 func kScaleW(x:CGFloat)->CGFloat {
     return (x*UIScreen.main.bounds.size.width)/375.00
 }

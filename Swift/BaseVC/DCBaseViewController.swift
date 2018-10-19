@@ -24,7 +24,7 @@ class DCBaseViewController: UIViewController {
             }
         }
         if (self.rightItemViews() != nil) {
-            self.addItem(left: false, item: self.leftItemViews() ?? nil, spaceWidth: 0)
+            self.addItem(left: false, item: self.rightItemViews() ?? nil, spaceWidth: 0)
         }
     }
     //点击屏幕退出编辑
@@ -145,5 +145,12 @@ class DCBaseViewController: UIViewController {
         }else {
             self.dismiss(animated: true, completion: nil);
         }
+    }
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+    deinit {
+       print(self)
+       print("被销毁了")
     }
 }
